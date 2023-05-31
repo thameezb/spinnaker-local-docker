@@ -8,11 +8,10 @@ services:
     ports:
       - "8084:8084"
       - "9000:9000"
-      - "9081:80"
     volumes:
       - ~/.hal:/home/spinnaker/.hal
       - ~/.ssh:/home/spinnaker/.ssh
-      - ~/.kube/config:/home/spinnaker/.kube/config_
+      - ~/.kube/config:/tmp/config
       - ~/projects/spinnaker:/home/spinnaker/dev/spinnaker
       - ~/.gitconfig:/home/spinnaker/.gitconfig
     networks:
@@ -37,7 +36,6 @@ services:
       - ~/projects/spinnaker/minio:/data
     networks:
       - spinnaker
-
 networks:
   spinnaker:
     name: spinnaker
