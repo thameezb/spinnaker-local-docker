@@ -1,0 +1,43 @@
+services:
+  halyard:
+    container_name: halyard
+    build: .
+    environment:
+      DECK_HOST: 0.0.0.0
+      API_HOST: http://localhost:8084
+    ports:
+      - "8084:8084"
+      - "9000:9000"
+      - "9081:80"
+    volumes:
+      - ~/.hal:/home/spinnaker/.hal
+      - ~/.ssh:/home/spinnaker/.ssh
+      - ~/.kube/config:/home/spinnaker/.kube/config_
+      - ~/projects/spinnaker:/home/spinnaker/dev/spinnaker
+      - ~/.gitconfig:/home/spinnaker/.gitconfig
+    networks:
+      - spinnaker
+
+  redis:
+    container_name: redis
+    image: "redis"
+    ports:
+      - "6379:6379"
+    networks:
+      - spinnaker
+
+  minio:
+    container_name: minio
+    image: "quay.io/minio/minio"
+    ports:
+      -  9001:9000
+    command: server /data
+    volumes:
+    # mkdir ~/projects/spinnaker/minio
+      - ~/projects/spinnaker/minio:/data
+    networks:
+      - spinnaker
+
+networks:
+  spinnaker:
+    name: spinnaker
