@@ -14,6 +14,7 @@ services:
       - ~/.kube/config:/tmp/config
       - ~/projects/spinnaker:/home/spinnaker/dev/spinnaker
       - ~/.gitconfig:/home/spinnaker/.gitconfig
+      - ./gh_pat:/home/spinnaker/gh_pat
     networks:
       - spinnaker
 

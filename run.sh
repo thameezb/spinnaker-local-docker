@@ -27,4 +27,12 @@ hal config provider kubernetes enable
 hal config provider kubernetes account add kind \
     --context kind-kind
 
+hal config artifact github enable
+hal config artifact github account add spin_local \
+    --token-file /home/spinnaker/gh_pat
+
+hal config artifact gitrepo enable
+hal config artifact gitrepo account add spin_local_gitrepo \
+    --token-file /home/spinnaker/gh_pat
+
 hal deploy apply

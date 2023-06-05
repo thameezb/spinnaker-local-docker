@@ -20,6 +20,8 @@ A very opinionated and rudimentary manner to run Spinnaker locally on macOS usin
 - Create `~/projects/spinnaker/minio` directory
 - Create kind cluster
   - `kind create cluster --config kind.yml`
+- Create Github PAT
+  - add PAT to gh_pat in root of this repo
 
 ## Run
 
