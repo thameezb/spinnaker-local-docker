@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-mkdir ~/.kube/
+mkdir -p ~/.kube/
 sed 's?https://0.0.0.0:16443?https://host.docker.internal:16443?g' /tmp/config > ~/.kube/config
 
 hal config deploy edit --type localgit --git-origin-user=thameezb
